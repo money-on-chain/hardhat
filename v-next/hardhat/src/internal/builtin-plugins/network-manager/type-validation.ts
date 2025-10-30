@@ -346,7 +346,7 @@ function refineEdrNetworkUserConfig(
     }
 
     const resolvedHardfork = hardfork ?? getCurrentHardfork(chainType);
-    if (chainType === L1_CHAIN_TYPE || chainType === GENERIC_CHAIN_TYPE) {
+    if (chainType === L1_CHAIN_TYPE) {
       if (hardforkGte(resolvedHardfork, L1HardforkName.LONDON, chainType)) {
         if (minGasPrice !== undefined) {
           ctx.addIssue({
@@ -404,8 +404,8 @@ const userConfigSchema = z.object({
 
 const networkConfigOverrideSchema = z
   .discriminatedUnion("type", [
-    httpNetworkUserConfigSchema.strict(),
-    edrNetworkUserConfigSchema.strict(),
+    httpNetworkUserConfigSchema.passthrough(),
+    edrNetworkUserConfigSchema.passthrough(),
   ])
   .superRefine(refineEdrNetworkUserConfig);
 

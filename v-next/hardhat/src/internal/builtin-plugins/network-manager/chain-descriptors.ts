@@ -155,7 +155,7 @@ export const DEFAULT_CHAIN_DESCRIPTORS: ChainDescriptorsConfig = new Map([
   ],
   // arbitrum sepolia testnet
   [
-    42_170n,
+    421_614n,
     {
       name: "Arbitrum Sepolia",
       chainType: GENERIC_CHAIN_TYPE,
@@ -479,6 +479,44 @@ export const DEFAULT_CHAIN_DESCRIPTORS: ChainDescriptorsConfig = new Map([
         blockscout: {
           url: "https://explorer.inkonchain.com",
           apiUrl: "https://explorer.inkonchain.com/api",
+        },
+      },
+    },
+  ],
+  // linea sepolia testnet
+  [
+    59_141n,
+    {
+      name: "Linea Sepolia",
+      chainType: GENERIC_CHAIN_TYPE,
+      blockExplorers: {
+        etherscan: {
+          name: "LineaScan",
+          url: "https://sepolia.lineascan.build",
+          apiUrl: "https://api-sepolia.lineascan.build/api",
+        },
+        blockscout: {
+          url: "https://explorer.sepolia.linea.build",
+          apiUrl: "https://api-explorer.sepolia.linea.build/api",
+        },
+      },
+    },
+  ],
+  // linea mainnet
+  [
+    59_144n,
+    {
+      name: "Linea",
+      chainType: GENERIC_CHAIN_TYPE,
+      blockExplorers: {
+        etherscan: {
+          name: "LineaScan",
+          url: "https://lineascan.build",
+          apiUrl: "https://api.lineascan.build/api",
+        },
+        blockscout: {
+          url: "https://explorer.linea.build",
+          apiUrl: "https://api-explorer.linea.build/api",
         },
       },
     },

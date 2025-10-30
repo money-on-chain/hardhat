@@ -302,6 +302,19 @@ export const ERROR_CATEGORIES: {
       },
     },
   },
+  HARDHAT_LEDGER: {
+    min: 90000,
+    max: 90999,
+    pluginId: "hardhat-ledger",
+    websiteTitle: "Hardhat Ledger",
+    CATEGORIES: {
+      GENERAL: {
+        min: 90000,
+        max: 90099,
+        websiteSubTitle: "General errors",
+      },
+    },
+  },
 };
 
 export const ERRORS = {
@@ -464,6 +477,14 @@ A fully qualified name should look like file.sol:Contract`,
         websiteDescription: `The config file has JS/TS errors.
 
 Please resolve the errors before rerunning the command.`,
+      },
+      NON_LOCAL_INSTALLATION: {
+        number: 22,
+        messageTemplate: `Trying to use a non-local installation of Hardhat, which is not supported.\n\nPlease install Hardhat locally using pnpm, npm or yarn, and try again.`,
+        websiteTitle: "Hardhat is not installed or installed globally",
+        websiteDescription: `You tried to run Hardhat from a global installation or not installing it at all. This is not supported.
+
+Please install Hardhat locally using pnpm, npm or yarn, and try again.`,
       },
     },
     INTERNAL: {
@@ -1134,6 +1155,18 @@ Please check Hardhat's output for more details.`,
         websiteTitle: "Build profile not defined",
         websiteDescription: `The build profile you are trying to use is not defined in your Hardhat config.`,
       },
+      COMPILER_PATH_DOES_NOT_EXIST: {
+        number: 913,
+        messageTemplate: `The compiler path "{compilerPath}" specified in your config for version {version} does not exist.`,
+        websiteTitle: "Compiler path does not exist",
+        websiteDescription: `The compiler path you are trying to use does not exist. Ensure you specified the correct path in the config file and that the file exists.`,
+      },
+      PARSING_VERSION_STRING_FAILED: {
+        number: 914,
+        messageTemplate: `Could not parse the full compiler version from "{versionString}" using "{compilerPath}"`,
+        websiteTitle: "Could not parse a compiler version",
+        websiteDescription: `Hardhat failed to parse the full compiler version from the output of the compiler's 'version' command.`,
+      },
     },
     ARTIFACTS: {
       NOT_FOUND: {
@@ -1742,6 +1775,14 @@ npx hardhat ignition track-tx <txHash> <deploymentId> --network <networkName>`,
         messageTemplate: `The deployment's chain cannot be changed between runs. The deployment was previously run against the chain {previousChainId}, but the current network is the chain {currentChainId}.`,
         websiteTitle: "Chain ID changed",
         websiteDescription: `The deployment's chain cannot be changed between runs.`,
+      },
+      ALREADY_IN_PROGRESS: {
+        number: 10901,
+        messageTemplate:
+          "Another instance of `IgnitionHelper.deploy()` is already in use. Please wait for the previous deployment to finish.",
+        websiteTitle: "Deployment already in progress",
+        websiteDescription:
+          "Another instance of `IgnitionHelper.deploy()` is already in use. Please wait for the previous deployment to finish.",
       },
     },
     VERIFY: {
@@ -2751,6 +2792,80 @@ export default { lib1: "0x...", lib2: "0x...", ... };
         websiteTitle: "Invalid verification provider",
         websiteDescription:
           "The specified verification provider is not supported. Please use one of the supported providers.",
+      },
+    },
+  },
+  HARDHAT_LEDGER: {
+    GENERAL: {
+      INVALID_LEDGER_ADDRESS: {
+        number: 90000,
+        messageTemplate: `The ledger address "{address}" in the Hardhat configuration file is invalid.`,
+        websiteTitle: "Invalid ledger address",
+        websiteDescription: `The ledger address in the Hardhat configuration file is invalid.`,
+      },
+      UNOWNED_LEDGER_ADDRESS: {
+        number: 90001,
+        messageTemplate: `Transaction attempted from address "{address}", which is not listed in the Hardhat configuration file.`,
+        websiteTitle: "Unknown ledger address",
+        websiteDescription: `Transaction attempted from an address which is not listed in the Hardhat configuration file.`,
+      },
+      CONNECTION_ERROR: {
+        number: 90002,
+        messageTemplate: `There was an error trying to establish a connection to the Ledger wallet: {error}.{transportId}
+
+Make sure your Ledger is connected and unlocked, and that the Ethereum app is open.`,
+        websiteTitle: "Ledger connection error",
+        websiteDescription: `There was an error trying to establish a connection to the Ledger wallet.
+
+Make sure your Ledger is connected and unlocked, and that the Ethereum app is open.`,
+      },
+      ERROR_WHILE_DERIVING_PATH: {
+        number: 90003,
+        messageTemplate: `There was an error trying to derive path "{path}": "{message}". The wallet might be connected but locked or in the wrong app.`,
+        websiteTitle: "Error while deriving path",
+        websiteDescription: `There was an error trying to derivate the path. The wallet might be connected but locked or in the wrong app.`,
+      },
+      CANNOT_FIND_VALID_DERIVATION_PATH: {
+        number: 90004,
+        messageTemplate: `Cannot find a valid derivation path for address "{address}". Paths from {pathStart} to {pathEnd} were searched.`,
+        websiteTitle: "Cannot find valid derivation path",
+        websiteDescription: `Cannot find a valid derivation path for the address`,
+      },
+      PERSONAL_SIGN_MISSING_ADDRESS_PARAM: {
+        number: 90005,
+        messageTemplate: `Missing address parameter when calling personal_sign.`,
+        websiteTitle: "Missing address parameter when calling personal_sign",
+        websiteDescription: `You called "personal_sign" with incorrect parameters.
+
+Please check that you are sending an "address" parameter.`,
+      },
+      ETH_SIGN_MISSING_DATA_PARAM: {
+        number: 90006,
+        messageTemplate: `Missing "data" param when calling eth_sign.`,
+        websiteTitle: `Missing "data" param when calling eth_sign.`,
+        websiteDescription: `You called "eth_sign" with incorrect parameters.
+
+Please check that you are sending a "data" parameter.`,
+      },
+      ETH_SIGN_TYPED_DATA_V4_INVALID_DATA_PARAM: {
+        number: 90007,
+        messageTemplate: `Invalid "data" param when calling eth_signTypedData_v4.`,
+        websiteTitle: `Invalid "data" param when calling eth_signTypedData_v4.`,
+        websiteDescription: `You called "eth_signTypedData_v4" with incorrect parameters.
+
+Please check that you are sending a "data" parameter with a JSON string or object conforming to EIP712 TypedData schema.`,
+      },
+      LOCKED_DEVICE: {
+        number: 90008,
+        messageTemplate: `The ledger device is locked. Please unlock it and try again.`,
+        websiteTitle: `The ledger device is locked`,
+        websiteDescription: `The ledger device is locked. Please unlock it and try again.`,
+      },
+      EIP_7702_TX_CURRENTLY_NOT_SUPPORTED: {
+        number: 90009,
+        messageTemplate: `EIP-7702 transactions are currently not supported.`,
+        websiteTitle: `EIP-7702 transactions are currently not supported`,
+        websiteDescription: `EIP-7702 transactions are currently not supported.`,
       },
     },
   },

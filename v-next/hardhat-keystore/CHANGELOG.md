@@ -1,13 +1,19 @@
 # @nomicfoundation/hardhat-keystore
 
-## 3.0.0-next.2
+## 3.0.2
 
 ### Patch Changes
 
-- Hardhat 3 Alpha release (2025-03-20T08:38:27.809Z)
+- 7876311: Fixed the development keystore logic that was being skipped during tests if the development keystore was missing ([7592](https://github.com/NomicFoundation/hardhat/pull/7592))
 
-## 3.0.0-next.1
+## 3.0.1
 
 ### Patch Changes
 
-- 209ea79: Improve the keystore error message displayed when the password is incorrect or the encrypted file is corrupted.
+- 003e72c: Help message phrasing unified
+
+## 3.0.0
+
+### Major Changes
+
+- 29cc141: First release of Hardhat 3!
