@@ -29,6 +29,7 @@ describe("ExecutionEngine", () => {
         5,
         5,
         false,
+        2000,
       );
 
       const deploymentState = await loadDeploymentState(deploymentLoader);

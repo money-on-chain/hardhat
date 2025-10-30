@@ -22,6 +22,7 @@ const exampleState: UiState = {
   isResumed: false,
   maxFeeBumps: 0,
   disableFeeBumping: false,
+  maxUnconfirmedTxs: 0,
   gasBumps: {},
   strategy: null,
 };

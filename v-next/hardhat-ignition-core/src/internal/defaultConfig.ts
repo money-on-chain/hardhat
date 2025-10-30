@@ -9,6 +9,7 @@ export const defaultConfig: DeployConfig = {
   maxFeeBumps: 4,
   requiredConfirmations: 5,
   disableFeeBumping: false,
+  maxUnconfirmedTxs: 0,
 };
 
 /**

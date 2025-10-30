@@ -21,6 +21,7 @@ module.exports = {
         maxPriorityFeePerGas: 3n,
         gasPrice: 1n,
         disableFeeBumping: false,
+        maxUnconfirmedTxs: 4000,
       },
     },
   },
@@ -35,5 +36,6 @@ module.exports = {
       },
     },
     disableFeeBumping: true,
+    maxUnconfirmedTxs: 2000,
   },
 };

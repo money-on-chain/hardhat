@@ -23,6 +23,7 @@ describe("ui - calculate starting message display", () => {
     isResumed: null,
     maxFeeBumps: 0,
     disableFeeBumping: false,
+    maxUnconfirmedTxs: 200,
     gasBumps: {},
     strategy: "basic",
   };

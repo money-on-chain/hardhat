@@ -87,6 +87,7 @@ export class Deployer {
       isResumed,
       this._config.maxFeeBumps,
       this._config.disableFeeBumping,
+      this._config.maxUnconfirmedTxs,
     );
 
     const contracts =
@@ -193,6 +194,7 @@ export class Deployer {
         this._config.maxFeeBumps,
         this._config.blockPollingInterval,
         this._config.disableFeeBumping,
+        this._config.maxUnconfirmedTxs,
       );
 
       deploymentState = await executionEngine.executeModule(
@@ -279,6 +281,7 @@ export class Deployer {
     isResumed: boolean,
     maxFeeBumps: number,
     disableFeeBumping: boolean,
+    maxUnconfirmedTxs: number,
   ): void {
     if (this._executionEventListener === undefined) {
       return;
@@ -291,6 +294,7 @@ export class Deployer {
       isResumed,
       maxFeeBumps,
       disableFeeBumping,
+      maxUnconfirmedTxs,
     });
   }
 

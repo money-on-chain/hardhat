@@ -42,6 +42,7 @@ export async function resolveUserConfig(
               maxPriorityFeePerGas: givenIgnition.maxPriorityFeePerGas,
               gasPrice: givenIgnition.gasPrice,
               disableFeeBumping: givenIgnition.disableFeeBumping,
+              maxUnconfirmedTxs: givenIgnition.maxUnconfirmedTxs,
               explorerUrl: givenIgnition.explorerUrl,
             },
           },

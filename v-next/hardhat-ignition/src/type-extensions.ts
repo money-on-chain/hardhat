@@ -20,6 +20,7 @@ declare module "hardhat/types/config" {
       maxPriorityFeePerGas?: bigint;
       gasPrice?: bigint;
       disableFeeBumping?: boolean;
+      maxUnconfirmedTxs?: number;
       explorerUrl?: string;
     };
   }
@@ -30,6 +31,7 @@ declare module "hardhat/types/config" {
       maxPriorityFeePerGas?: bigint;
       gasPrice?: bigint;
       disableFeeBumping?: boolean;
+      maxUnconfirmedTxs?: number;
       explorerUrl?: string;
     };
   }
@@ -40,6 +42,7 @@ declare module "hardhat/types/config" {
       maxPriorityFeePerGas?: bigint;
       gasPrice?: bigint;
       disableFeeBumping?: boolean;
+      maxUnconfirmedTxs?: number;
       explorerUrl?: string;
     };
   }
@@ -50,6 +53,7 @@ declare module "hardhat/types/config" {
       maxPriorityFeePerGas?: bigint;
       gasPrice?: bigint;
       disableFeeBumping?: boolean;
+      maxUnconfirmedTxs?: number;
       explorerUrl?: string;
     };
   }

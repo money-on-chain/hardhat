@@ -66,6 +66,7 @@ export async function setupFutureProcessor(
     {},
     getDefaultSender(exampleAccounts),
     false, // disableFeeBumping
+    0, // maxUnconfirmedTxs
   );
 
   return { processor, storedDeployedAddresses };

@@ -33,6 +33,12 @@ export interface DeployConfig {
    * Disables fee bumping for all transactions.
    */
   disableFeeBumping: boolean;
+
+  /**
+   * Will not send more than this many txs to the mempool
+   * waiting for a new block before sending more.
+   */
+  maxUnconfirmedTxs: number;
 }
 
 /**

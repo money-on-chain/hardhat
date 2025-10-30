@@ -9,7 +9,7 @@ import { toMermaid } from "../src/utils/to-mermaid.js";
 
 describe("to-mermaid", () => {
   it("should render a single deploy contract diagram", () => {
-    const moduleDefinition = buildModule("Module", (m) => {
+    const moduleDefinition = buildModule("Module", (m: any) => {
       const p = m.getParameter("p", 123);
       const contract1 = m.contract("Contract1", [{ arr: [p] }]);
 
@@ -45,7 +45,7 @@ describe("to-mermaid", () => {
   });
 
   it("should render a module with a space in the name", () => {
-    const moduleDefinition = buildModule("Test_registrar", (m) => {
+    const moduleDefinition = buildModule("Test_registrar", (m: any) => {
       const p = m.getParameter("p", 123);
       const contract1 = m.contract("Contract1", [{ arr: [p] }]);
 
@@ -81,19 +81,19 @@ describe("to-mermaid", () => {
   });
 
   it("should render a multi-module deploy diagram", () => {
-    const sub1 = buildModule("Submodule1", (m) => {
+    const sub1 = buildModule("Submodule1", (m: any) => {
       const contract1 = m.contract("Contract1", []);
 
       return { contract1 };
     });
 
-    const sub2 = buildModule("Submodule2", (m) => {
+    const sub2 = buildModule("Submodule2", (m: any) => {
       const contract2 = m.contract("Contract2", []);
 
       return { contract2 };
     });
 
-    const moduleDefinition = buildModule("Module", (m) => {
+    const moduleDefinition = buildModule("Module", (m: any) => {
       const { contract1 } = m.useModule(sub1);
       const { contract2 } = m.useModule(sub2);
 
@@ -191,7 +191,7 @@ describe("to-mermaid", () => {
     const libArtifact = fakeArtifact;
     const withLibArtifact = fakeArtifact;
 
-    const moduleDefinition = buildModule("Module", (m) => {
+    const moduleDefinition = buildModule("Module", (m: any) => {
       const basic = m.contract("BasicContract");
       const library = m.library("BasicLibrary");
       const libFromArtifact = m.library("BasicLibrary", libArtifact, {
@@ -274,7 +274,7 @@ describe("to-mermaid", () => {
   });
 
   it("should render calls with args", () => {
-    const moduleDefinition = buildModule("Module", (m) => {
+    const moduleDefinition = buildModule("Module", (m: any) => {
       const resolver = m.contract("ens", []);
 
       m.call(resolver, "setAddr(bytes32,address)", [123, "0x0123"]);

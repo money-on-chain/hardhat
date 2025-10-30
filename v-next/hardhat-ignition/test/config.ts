@@ -30,6 +30,7 @@ describe("config", () => {
               maxPriorityFeePerGas: 3n,
               gasPrice: 1n,
               disableFeeBumping: false,
+              maxUnconfirmedTxs: 2000,
             },
           },
         },
@@ -44,6 +45,7 @@ describe("config", () => {
             },
           },
           disableFeeBumping: true,
+          maxUnconfirmedTxs: 200,
         },
       });
 
@@ -77,6 +79,10 @@ describe("config", () => {
       assert.equal(loadedOptions.disableFeeBumping, true);
     });
 
+    it("should apply maxUnconfirmedTxs at the top level", async function () {
+      assert.equal(loadedOptions.maxUnconfirmedTxs, 200);
+    });
+
     it("should apply maxFeePerGasLimit", async function () {
       assert.equal(hardhatNetworkOptions.ignition.maxFeePerGasLimit, 2n);
     });
@@ -93,11 +99,16 @@ describe("config", () => {
       assert.equal(hardhatNetworkOptions.ignition.disableFeeBumping, false);
     });
 
+    it("should apply maxUnconfirmedTxs at the network level", async function () {
+      assert.equal(hardhatNetworkOptions.ignition.maxUnconfirmedTxs, 2000);
+    });
+
     it("should only have known config", () => {
       const configOptions: KeyListOf<HardhatConfig["ignition"]> = [
         "blockPollingInterval",
         "disableFeeBumping",
         "maxFeeBumps",
+        "maxUnconfirmedTxs",
         "requiredConfirmations",
         "strategyConfig",
         "timeBeforeBumpingFees",

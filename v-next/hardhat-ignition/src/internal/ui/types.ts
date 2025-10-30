@@ -65,6 +65,7 @@ export interface UiState {
   maxFeeBumps: number;
   gasBumps: Record<string, number>;
   disableFeeBumping: boolean | null;
+  maxUnconfirmedTxs: number | null;
   strategy: string | null;
 }
 

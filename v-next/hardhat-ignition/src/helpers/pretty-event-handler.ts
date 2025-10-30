@@ -74,6 +74,7 @@ export class PrettyEventHandler implements ExecutionEventListener {
     isResumed: null,
     maxFeeBumps: 0,
     disableFeeBumping: null,
+    maxUnconfirmedTxs: null,
     gasBumps: {},
     strategy: null,
   };
@@ -100,6 +101,7 @@ export class PrettyEventHandler implements ExecutionEventListener {
       isResumed: event.isResumed,
       maxFeeBumps: event.maxFeeBumps,
       disableFeeBumping: event.disableFeeBumping,
+      maxUnconfirmedTxs: event.maxUnconfirmedTxs,
     };
 
     process.stdout.write(calculateStartingMessage(this.state));

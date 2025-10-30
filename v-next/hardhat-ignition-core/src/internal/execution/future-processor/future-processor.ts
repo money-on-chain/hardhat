@@ -53,6 +53,7 @@ export class FutureProcessor {
     private readonly _deploymentParameters: DeploymentParameters,
     private readonly _defaultSender: string,
     private readonly _disableFeeBumping: boolean,
+    private readonly _maxUnconfirmedTxs: number,
   ) {}
 
   /**
@@ -188,6 +189,23 @@ export class FutureProcessor {
           exState.type !== ExecutionSateType.STATIC_CALL_EXECUTION_STATE,
           `Unexpected transaction request in StaticCallExecutionState ${exState.id}`,
         );
+
+        // Some blockchains have a maximum transaction number that can go
+        // in the mempool for a given user. We use this setting to prevent
+        // hitting that limit.
+        if (this._maxUnconfirmedTxs > 0) {
+          const pending = await this._jsonRpcClient.getTransactionCount(
+            exState.from,
+            "pending",
+          );
+          const latest = await this._jsonRpcClient.getTransactionCount(
+            exState.from,
+            "latest",
+          );
+          if (pending - latest >= this._maxUnconfirmedTxs) {
+            return undefined;
+          }
+        }
 
         return sendTransaction(
           exState,

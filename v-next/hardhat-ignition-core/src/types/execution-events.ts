@@ -86,6 +86,7 @@ export interface DeploymentStartEvent {
   isResumed: boolean;
   maxFeeBumps: number;
   disableFeeBumping: boolean;
+  maxUnconfirmedTxs: number;
 }
 
 /**
